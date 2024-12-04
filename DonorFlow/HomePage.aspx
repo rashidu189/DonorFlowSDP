@@ -6,7 +6,7 @@
     <div class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Welcome to CrowdFundPro</h1>
+            <h1>Welcome to DonorFlow</h1>
             <p>Empower dreams, support causes, and make a difference together.</p>
             <a href="signup.html" class="btn btn-primary btn-lg">Get Started</a>
             <a href="#features" class="btn btn-outline-light btn-lg">Learn More</a>
@@ -16,7 +16,7 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2>Why Choose CrowdFundPro?</h2>
+            <h2>Why Choose DonorFlow?</h2>
             <div class="row">
                 <div class="col-md-4 feature-item">
                     <h3>Easy Campaign Setup</h3>
@@ -46,11 +46,15 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url('Images/HomePage/Slide2.jpg');
+            background-size: cover; 
+            background-position: center center; 
+            background-attachment: fixed; 
         }
 
         .hero {
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center;
-            height: 100vh;
+            width:100%;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,7 +69,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.4);
             z-index: 1;
         }
 
@@ -96,6 +100,7 @@
         .features {
             padding: 4rem 2rem;
             text-align: center;
+            color:white;
         }
 
         .features h2 {
@@ -106,13 +111,24 @@
             margin-bottom: 2rem;
         }
 
-        .footer {
-            background-color: #f8f9fa;
-            padding: 2rem 0;
-            text-align: center;
-        }
+
+
+
+
+
 
     </style>
+
+
+    <script>
+
+
+
+
+
+    </script>
+
+
 
 
 </asp:Content>

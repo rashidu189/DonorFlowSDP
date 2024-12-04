@@ -11,7 +11,11 @@ namespace DonorFlow
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string currentPage = System.IO.Path.GetFileName(Request.Url.AbsolutePath);
+            if (currentPage == "LoginPage.aspx") // Master page itself
+            {
+                DonorMenu.Visible = false;
+            }
         }
     }
 }

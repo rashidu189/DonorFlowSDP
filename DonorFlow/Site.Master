@@ -6,17 +6,18 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title>Donor System</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/favicon1.ico" rel="shortcut icon" type="image/x-icon" />
+
 
 </head>
-<body>
+<body id="masterBody" class="<%= System.IO.Path.GetFileName(Request.Url.AbsolutePath).Replace(".aspx", "") %>">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -37,40 +38,548 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" runat="server" href="HomePage.aspx">            
-                    <img src="Images/MainLogo/MainLogo.png" alt="DonorFlow Logo" class="rounded-circle me-2" style="height: 60px; width: 60px; object-fit: cover; border: 3px solid orange;">
-                     <span>DonorFlow</span></a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Login">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact Us</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Register">Start Fundrising</a></li>
-                    </ul>
+        <asp:Panel ID="navbar" runat="server">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" runat="server" href="HomePage.aspx">
+                        <img src="Images/MainLogo/MainLogo.png" alt="DonorFlow Logo" class="rounded-circle me-2" style="height: 60px; width: 60px; object-fit: cover; border: 3px solid orange;">
+                        <span>DonorFlow</span>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item"><a class="nav-link" runat="server" href="HomePage.aspx">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="LoginPage.aspx">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="RegistrationPage.aspx">Start Fundrising</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </asp:Panel>
+
+        <!--Donor Side Menu-->
+        <asp:Panel ID="DonorMenu" runat="server">
+            <div class="main-content">
+                <div class="home-card">
+                    <div class="card hedcard">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="btn-username d-flex align-items-center" style="margin-left: 50px;">
+                                        <div class="brandLogo d-flex align-items-center">
+                                            <img src="Images/MainLogo/MainLogo.png" alt="DonorFlow Logo" class="rounded-circle me-2" style="height: 40px; width: 40px; border: 3px solid orange;">
+                                            <span style="color: white;">DonorFlow</span>
+                                        </div>
+                                        <img for="memberphoto" width="40" src="Images/UserLogo/imglogo.png" class="mr-2 MImage" style="margin-left: 400px;">
+                                        <asp:LinkButton class="U_name" ID="LinkButton15" runat="server">Donor Name</asp:LinkButton>
+                                        <a href="DonorProfilePage" class="viewProfile">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+            <div class="area"></div>
+            <nav class="main-menu">
+                <ul>
+                    <li>
+                        <a href="https://jbfarrow.com">
+                            <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">Home
+                            </span>
+                        </a>
+
+                    </li>
+                    <li class="has-subnav">
+                        <a href="#">
+                            <i class="fa fa-eye fa-2x"></i>
+                            <span class="nav-text">View Campaigns
+                            </span>
+                        </a>
+
+                    </li>
+                    <li class="has-subnav">
+                        <a href="#">
+                            <i class="fa fa-list fa-2x"></i>
+                            <span class="nav-text">Donation History
+                            </span>
+                        </a>
+
+                    </li>
+                    <!-- <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-camera-retro fa-2x"></i>
+                        <span class="nav-text">
+                            Survey Photos
+                        </span>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-film fa-2x"></i>
+                        <span class="nav-text">
+                            Surveying Tutorials
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book fa-2x"></i>
+                        <span class="nav-text">
+                           Surveying Jobs
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a href="#">
+                       <i class="fa fa-cogs fa-2x"></i>
+                        <span class="nav-text">
+                            Tools & Resources
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a href="#">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+                            Member Map
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                       <i class="fa fa-info fa-2x"></i>
+                        <span class="nav-text">
+                            Documentation
+                        </span>
+                    </a>
+                </li>-->
+                </ul>
+
+                <ul class="logout">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-power-off fa-2x"></i>
+                            <span class="nav-text">Logout
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </asp:Panel>
+
+        <!--Campaign Creator Side Menu-->
+        <asp:Panel ID="CampaignCreatorMenu" runat="server">
+            <div class="main-content">
+                <div class="home-card">
+                    <div class="card hedcard">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="btn-username d-flex align-items-center" style="margin-left: 50px;">
+                                        <div class="brandLogo d-flex align-items-center">
+                                            <img src="Images/MainLogo/MainLogo.png" alt="DonorFlow Logo" class="rounded-circle me-2" style="height: 40px; width: 40px; border: 3px solid orange;">
+                                            <span style="color: white;">DonorFlow</span>
+                                        </div>
+                                        <img for="memberphoto" width="40" src="Images/UserLogo/imglogo.png" class="mr-2 MImage" style="margin-left: 400px;">
+                                        <asp:LinkButton class="U_name" ID="LinkButton1" runat="server">Campaign Creator Name</asp:LinkButton>
+                                        <a href="DonorProfilePage" class="viewProfile">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="area"></div>
+            <nav class="main-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="view-campaigns.html">
+                            <i class="fa fa-eye fa-2x"></i>
+                            <span class="nav-text">View Campaigns</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="donation-history.html">
+                            <i class="fa fa-list fa-2x"></i>
+                            <span class="nav-text">Donation History</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="create-campaign.html">
+                            <i class="fa fa-plus fa-2x"></i>
+                            <span class="nav-text">Create Campaign</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="manage-campaign.html">
+                            <i class="fa fa-tasks fa-2x"></i>
+                            <span class="nav-text">Manage Campaigns</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="campaign-analytics.html">
+                            <i class="fa fa-signal fa-2x"></i>
+                            <span class="nav-text">Campaign Analytics</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="templates.html">
+                            <i class="fa fa-archive fa-2x"></i>
+                            <span class="nav-text">Templates</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="settings.html">
+                            <i class="fa fa-cogs fa-2x"></i>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="help-support.html">
+                            <i class="fa fa-question-circle fa-2x"></i>
+                            <span class="nav-text">Help & Support</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="logout">
+                    <li>
+                        <a href="logout.html">
+                            <i class="fa fa-power-off fa-2x"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+        </asp:Panel>
+
+
+
+        <!--Administrator Creator Side Menu-->
+        <asp:Panel ID="AdminMenu" runat="server">
+            <div class="main-content">
+                <div class="home-card">
+                    <div class="card hedcard">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="btn-username d-flex align-items-center" style="margin-left: 50px;">
+                                        <div class="brandLogo d-flex align-items-center">
+                                            <img src="Images/MainLogo/MainLogo.png" alt="DonorFlow Logo" class="rounded-circle me-2" style="height: 40px; width: 40px; border: 3px solid orange;">
+                                            <span style="color: white;">DonorFlow</span>
+                                        </div>
+                                        <img for="memberphoto" width="40" src="Images/UserLogo/imglogo.png" class="mr-2 MImage" style="margin-left: 400px;">
+                                        <asp:LinkButton class="U_name" ID="LinkButton2" runat="server">Administrator Name</asp:LinkButton>
+                                        <a href="DonorProfilePage" class="viewProfile">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="area"></div>
+            <nav class="main-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="manage-users.html">
+                            <i class="fa fa-users fa-2x"></i>
+                            <span class="nav-text">Manage Users</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="campaign-management.html">
+                            <i class="fa fa-eye fa-2x"></i>
+                            <span class="nav-text">Manage Campaigns</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="transaction-monitoring.html">
+                            <i class="fa fa-credit-card fa-2x"></i>
+                            <span class="nav-text">Monitor Transactions</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="platform-reports.html">
+                            <i class="fa fa-print fa-2x"></i>
+                            <span class="nav-text">Platform Reports</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="support-tickets.html">
+                            <i class="fa fa-wrench fa-2x"></i>
+                            <span class="nav-text">User Support</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="settings.html">
+                            <i class="fa fa-cogs fa-2x"></i>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="logout">
+                    <li>
+                        <a href="logout.html">
+                            <i class="fa fa-power-off fa-2x"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+
+        </asp:Panel>
+
+
+        <style>
+                @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+            
+            @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+            .fa-2x {
+            font-size: 2em;
+            }
+            .fa {
+            position: relative;
+            display: table-cell;
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            vertical-align: middle;
+            font-size:20px;
+            }
+
+
+            .main-menu:hover,nav.main-menu.expanded {
+            width:250px;
+            overflow:visible;
+            }
+
+            .main-menu {
+            background:#212121;
+            border-right:1px solid #e5e5e5;
+            position:absolute;
+            top:0;
+            bottom:0;
+            height:100%;
+            left:0;
+            width:60px;
+            overflow:hidden;
+            -webkit-transition:width .05s linear;
+            transition:width .05s linear;
+            -webkit-transform:translateZ(0) scale(1,1);
+            z-index:1000;
+            margin-top:75px;
+            }
+
+            .main-menu>ul {
+            margin:7px 0;
+            }
+
+            .main-menu li {
+            position:relative;
+            display:block;
+            width:250px;
+            }
+
+            .main-menu li>a {
+            position:relative;
+            display:table;
+            border-collapse:collapse;
+            border-spacing:0;
+            color:#999;
+             font-family: arial;
+            font-size: 14px;
+            text-decoration:none;
+            -webkit-transform:translateZ(0) scale(1,1);
+            -webkit-transition:all .1s linear;
+            transition:all .1s linear;
+  
+            }
+
+            .main-menu .nav-icon {
+            position:relative;
+            display:table-cell;
+            width:60px;
+            height:36px;
+            text-align:center;
+            vertical-align:middle;
+            font-size:18px;
+            }
+
+            .main-menu .nav-text {
+            position:relative;
+            display:table-cell;
+            vertical-align:middle;
+            width:190px;
+              font-family: 'Titillium Web', sans-serif;
+            }
+
+            .no-touch .scrollable.hover {
+            overflow-y:hidden;
+            }
+
+            .no-touch .scrollable.hover:hover {
+            overflow-y:auto;
+            overflow:visible;
+            }
+
+            a:hover,a:focus {
+            text-decoration:none;
+            }
+
+            nav {
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            -o-user-select:none;
+            user-select:none;
+            }
+
+            nav ul,nav li {
+            outline:0;
+            margin:0;
+            padding:0;
+            }
+            .main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+            color:#fff;
+            background-color:#000000;
+            }
+            .area {
+            float: left;
+            background: #e2e2e2;
+            width: 100%;
+            height: 100%;
+            }
+            @font-face {
+              font-family: 'Titillium Web';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+            }
+
+            .hedcard{
+                width:auto;
+                font-weight: bold;
+                background-color:#212121;
+            }
+
+            .viewProfile {
+                font-weight: bold;
+                margin-left:700px;
+                color:white;
+            }
+            .btn-username{
+                margin-left:500px;
+                
+            }
+            .U_name{
+               color:white;
+
+            }
+
+</style>
+
+
+
+
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
                 <!-- Footer Section -->
+             <div class="footerSystem">
              <footer class="footer">
-                <div class="container">
                     <p>&copy; <%: DateTime.Now.Year %> DonorFlow. All Rights Reserved.</p>
-                </div>
             </footer>
         </div>
+      </div>
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
 </body>
 </html>
+
+<style>
+
+
+/*Donor User Page Content Hide anouther Pages*/
+
+.LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu
+
+
+{
+    display: none;
+}
+
+/*Campaign Creator User Page Content Hide anouther Pages*/
+
+.LoginPage #CampaignCreatorMenu , .RegistrationPage #CampaignCreatorMenu , .HomePage #CampaignCreatorMenu , .DonorHomePage #CampaignCreatorMenu ,.AdministratorHomePage #CampaignCreatorMenu
+
+{
+    display: none;
+}
+
+/*Master Page Content Hide anouther Pages*/
+
+.DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar{
+    display: none;
+}
+
+/*Admin User Page Content Hide anouther Pages*/
+
+.LoginPage #AdminMenu , .RegistrationPage #AdminMenu , .HomePage #AdminMenu , .DonorHomePage #AdminMenu , .CampaignCreatorsHomePage #AdminMenu{
+    display: none;
+}
+
+.LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem{
+    color:black;
+    text-align: center; 
+    padding: 10px; 
+}
+.RegistrationPage .footerSystem{
+    color:black;
+    text-align: center; 
+    padding: 10px; 
+}
+
+.footerSystem{
+    color:white;
+    text-align: center; 
+    padding: 10px; 
+}
+
+
+
+</style>
