@@ -138,6 +138,10 @@
     <Content Include="Images\UserLogo\imglogo.png" />
     <Content Include="LoginPage.aspx" />
     <Content Include="RegistrationPage.aspx" />
+    <Content Include="Resources\error.png" />
+    <Content Include="Resources\info.png" />
+    <Content Include="Resources\success.png" />
+    <Content Include="Resources\warning.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

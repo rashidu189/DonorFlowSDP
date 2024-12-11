@@ -29,6 +29,15 @@
                 <label for="Address">Address:</label><br />
                 <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Enter your address" required="required"></asp:TextBox>
             </div>
+            <div style="margin-top: 10px;">
+                <label for="Password">Password:</label><br />
+                <asp:TextBox CssClass="form-control" ID="txtpwd" runat="server" placeholder="Enter your Password" TextMode="Password"></asp:TextBox>
+            </div>
+            <div style="margin-top: 10px;">
+                <label for="CPassword">Confirm Password:</label><br />
+                <asp:TextBox CssClass="form-control" ID="ctxtpwd" runat="server" placeholder="Confirm your Password" TextMode="Password"></asp:TextBox>
+            </div>
+
 
         <div class="row">
             <div class="col mx-auto">

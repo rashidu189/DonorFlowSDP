@@ -69,6 +69,24 @@ namespace DonorFlow
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
+        /// txtpwd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtpwd;
+
+        /// <summary>
+        /// ctxtpwd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ctxtpwd;
+
+        /// <summary>
         /// LoginBtn control.
         /// </summary>
         /// <remarks>
