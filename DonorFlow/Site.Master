@@ -518,11 +518,11 @@
 
             .viewProfile {
                 font-weight: bold;
-                margin-left:700px;
+                margin-left:500px;
                 color:white;
             }
             .btn-username{
-                margin-left:500px;
+                margin-left:400px;
                 
             }
             .U_name{

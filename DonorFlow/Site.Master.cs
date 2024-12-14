@@ -14,7 +14,19 @@ namespace DonorFlow
             // Page_Load logic for the master page
         }
 
+        // Expose LinkButton15 via a public property with a different name
+        public LinkButton LinkButton15Property
+        {
+            get { return this.LinkButton15; }
+        }
+        public LinkButton LinkButton1Property
+        {
+            get { return this.LinkButton1; }
+        }
+        public LinkButton LinkButton2Property
+        {
+            get { return this.LinkButton2; }
+        }
     }
-
 }
 
