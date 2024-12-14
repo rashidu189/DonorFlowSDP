@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="DonorFlow.LoginPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div style="max-width: 400px; margin: auto; padding: 20px; border: 2px solid #ccc; border-radius: 10px; margin-top:50px;">
+        <div style="max-width: 400px; margin: auto; padding: 20px; border: 2px solid #ccc; border-radius: 10px; margin-top:50px;">
         <div class="row">
             <div class="col">
                 <center>
@@ -43,9 +43,9 @@
                             Forgot Password?
                         </asp:LinkButton>
         </div>
-    </div>
-                        <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
-                        <div class="modal-dialog custom-size mx-auto">
+
+                    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="forgotPasswordLabel">Forgot Password</h5>
@@ -55,18 +55,21 @@
                                     <div class="row">
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
-                                            <!--<input type="email" class="form-control" id="email" name="email">-->
-                                             <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Enter Your Email" required="required"></asp:TextBox>
+                                           <!-- <input type="email" class="form-control" id="email" name="email">-->
+                                            <asp:TextBox ID="txtREmail" runat="server" CssClass="form-control" placeholder="Enter Your Email" />
                                         </div>
                                     </div>
                                 <div class="modal-footer">
                                     <!--<button type="button" class="btn btn-primary" id="resetPasswordButton">Reset Password</button>-->
-                                    <asp:Button class="btn btn-blue text-center" ID="ResetBtn" runat="server" Text="Reset Password" OnClick="ResetBtn_Click" />
+                                    <asp:Button CssClass="btn btn-red resetbtn" ID="ResetPasswordNew" runat="server" Text="Reset Password" OnClick ="ResetPassword_Click" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </div> 
+                    </div>   
+
+    </div>
+
     
 
 
@@ -90,38 +93,6 @@
         }
     }
 
-        // Forgot Password Script
-
-      /*  document.getElementById("resetPasswordButton").addEventListener("click", function () {
-            const email = document.getElementById("email").value.trim();
-
-            if (!email) {
-                alert("Please fill in email fields.");
-                return;
-            }
-
-            fetch("LoginPage.aspx/ResetPassword", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.d) {
-                        alert(data.d);
-                    } else {
-                        alert("An unexpected error occurred.");
-                    }
-                })
-                .catch(error => console.error("Error:", error));
-        });*/
 
         //Show Modal Script
         function showForgotPasswordModal() {
@@ -129,9 +100,10 @@
             modal.show();
         }
 
-        // clear textboxes
+        // Clear textboxes when the modal is closed
         $('#forgotPasswordModal').on('hidden.bs.modal', function () {
-            document.getElementById('email').value = '';
+            // Using the ClientID of the TextBox control to ensure correct targeting
+            $('#<%= txtREmail.ClientID %>').val('');
         });
 
 
@@ -162,6 +134,14 @@
         }
 
         .btn-blue:hover {
+            background-color: #007bff; 
+            color: white;
+        }
+        .resetbtn{
+            background-color: #0056b3; 
+            color: white; 
+        }
+        .resetbtn:hover{
             background-color: #007bff; 
             color: white;
         }
