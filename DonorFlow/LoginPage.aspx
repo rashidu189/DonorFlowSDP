@@ -55,11 +55,13 @@
                                     <div class="row">
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email">
+                                            <!--<input type="email" class="form-control" id="email" name="email">-->
+                                             <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Enter Your Email" required="required"></asp:TextBox>
                                         </div>
                                     </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" id="resetPasswordButton">Reset Password</button>
+                                    <!--<button type="button" class="btn btn-primary" id="resetPasswordButton">Reset Password</button>-->
+                                    <asp:Button class="btn btn-blue text-center" ID="ResetBtn" runat="server" Text="Reset Password" OnClick="ResetBtn_Click" />
                                 </div>
                             </div>
                         </div>
@@ -88,51 +90,49 @@
         }
     }
 
-    // Forgot Password Script
+        // Forgot Password Script
 
-    document.getElementById("resetPasswordButton").addEventListener("click", function () {
-        const userFId = document.getElementById("userFId").value.trim();
-        const email = document.getElementById("email").value.trim();
+      /*  document.getElementById("resetPasswordButton").addEventListener("click", function () {
+            const email = document.getElementById("email").value.trim();
 
-        if (!userFId || !email) {
-            alert("Please fill in both fields.");
-            return;
+            if (!email) {
+                alert("Please fill in email fields.");
+                return;
+            }
+
+            fetch("LoginPage.aspx/ResetPassword", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.d) {
+                        alert(data.d);
+                    } else {
+                        alert("An unexpected error occurred.");
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        });*/
+
+        //Show Modal Script
+        function showForgotPasswordModal() {
+            const modal = new bootstrap.Modal(document.getElementById('forgotPasswordModal'));
+            modal.show();
         }
 
-        fetch("LoginPage.aspx/ResetPassword", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ userFId, email })
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.d) {
-                    alert(data.d);
-                } else {
-                    alert("An unexpected error occurred.");
-                }
-            })
-            .catch(error => console.error("Error:", error));
-    });
-
-    //Show Modal Script
-    function showForgotPasswordModal() {
-        const modal = new bootstrap.Modal(document.getElementById('forgotPasswordModal'));
-        modal.show();
-    }
-
-    // clear textboxes
-    $('#forgotPasswordModal').on('hidden.bs.modal', function () {
-        document.getElementById('userFId').value = '';
-        document.getElementById('email').value = '';
-    });
+        // clear textboxes
+        $('#forgotPasswordModal').on('hidden.bs.modal', function () {
+            document.getElementById('email').value = '';
+        });
 
 
     </script>

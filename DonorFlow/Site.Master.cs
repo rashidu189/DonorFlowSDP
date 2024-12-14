@@ -11,10 +11,20 @@ namespace DonorFlow
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string currentPage = System.IO.Path.GetFileName(Request.Url.AbsolutePath);
-            if (currentPage == "LoginPage.aspx") // Master page itself
+            try
             {
-                DonorMenu.Visible = false;
+                if (Session["role"].Equals(""))
+                {
+                    LinkButton15.Visible = true;
+                }
+                else if (Session["role"].Equals("DonorFlow_User"))
+                {
+                    LinkButton15.Text = Session["First_Name"].ToString() + " " + Session["Last_Name"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
             }
         }
     }
