@@ -245,7 +245,7 @@
                         </a>
                     </li>
                     <li class="has-subnav">
-                        <a href="create-campaign.html">
+                        <a href="CampaignCreatePage.aspx">
                             <i class="fa fa-plus fa-2x"></i>
                             <span class="nav-text">Create Campaign</span>
                         </a>
@@ -560,7 +560,7 @@
 /*Donor User Page Content Hide anouther Pages*/
 
 .LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
-.CCProfile #DonorMenu, .AdminProfile #DonorMenu
+.CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu
 
 {
     display: none;
@@ -577,7 +577,7 @@
 /*Master Page Content Hide anouther Pages*/
 
 .DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
-.AdminProfile #navbar
+.AdminProfile #navbar, .CampaignCreatePage #navbar
 {
     display: none;
 }
@@ -585,13 +585,13 @@
 /*Admin User Page Content Hide anouther Pages*/
 
 .LoginPage #AdminMenu , .RegistrationPage #AdminMenu , .HomePage #AdminMenu , .DonorHomePage #AdminMenu , .CampaignCreatorsHomePage #AdminMenu, .DonorProfile #AdminMenu,
-.CCProfile #AdminMenu
+.CCProfile #AdminMenu, .CampaignCreatePage #AdminMenu
 {
     display: none;
 }
 
 .LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
-.CCProfile .footerSystem, .AdminProfile .footerSystem
+.CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem
 {
     color:black;
     text-align: center; 

@@ -1,0 +1,8 @@
+CREATE TABLE Campaign (
+    ID INT IDENTITY(1,1) PRIMARY KEY,  -- Auto-incrementing ID
+    Campaign_ID AS ('CA' + RIGHT('00000' + CONVERT(VARCHAR(5), [ID]), 5)) PERSISTED,  -- Campaign ID with 'CA' prefix and zero-padded
+    CampaignName VARCHAR(255),
+    StartDate DATETIME,
+    EndDate DATETIME,
+    Description TEXT
+);

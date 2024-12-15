@@ -104,6 +104,7 @@
   <ItemGroup>
     <Content Include="AdministratorHomePage.aspx" />
     <Content Include="AdminProfile.aspx" />
+    <Content Include="CampaignCreatePage.aspx" />
     <Content Include="CampaignCreatorsHomePage.aspx" />
     <Content Include="CCProfile.aspx" />
     <Content Include="DonorHomePage.aspx" />
@@ -224,6 +225,13 @@
       <DependentUpon>AdminProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="CampaignCreatePage.aspx.cs">
+      <DependentUpon>CampaignCreatePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignCreatePage.aspx.designer.cs">
+      <DependentUpon>CampaignCreatePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CampaignCreatorsHomePage.aspx.cs">
       <DependentUpon>CampaignCreatorsHomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -330,6 +338,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Campaign_Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

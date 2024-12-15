@@ -63,7 +63,7 @@ namespace DonorFlow
                         cmd.Parameters.AddWithValue("@PhoneNo", txtMobileNo.Text.Trim());
                         cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
                         cmd.Parameters.AddWithValue("@Email", txtEmailId.Text.Trim());
-                        cmd.Parameters.AddWithValue("@DOB", DateTime.Parse(txtDob.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@DOB", DateTime.Parse(txtDob.Text.Trim()).ToString("yyyy-MM-dd"));
 
                         // Use the dynamic UserId from Session instead of hardcoding
                         cmd.Parameters.AddWithValue("@UserId", UserId);

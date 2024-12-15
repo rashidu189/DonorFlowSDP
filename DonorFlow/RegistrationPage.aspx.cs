@@ -136,7 +136,7 @@ namespace DonorFlow
                     cmdInsert.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
                     cmdInsert.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                     cmdInsert.Parameters.AddWithValue("@PhoneNo", txtPhoneNumber.Text.Trim());
-                    cmdInsert.Parameters.AddWithValue("@DOB", txtDateOfBirth.Text.Trim());
+                    cmdInsert.Parameters.AddWithValue("@DOB", DateTime.Parse(txtDateOfBirth.Text.Trim()).ToString("yyyy-MM-dd"));
                     cmdInsert.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
                     cmdInsert.Parameters.AddWithValue("@Status", userStatus);
                     cmdInsert.Parameters.AddWithValue("@RegisteredDate", regDate);
