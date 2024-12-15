@@ -103,8 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdministratorHomePage.aspx" />
+    <Content Include="AdminProfile.aspx" />
     <Content Include="CampaignCreatorsHomePage.aspx" />
+    <Content Include="CCProfile.aspx" />
     <Content Include="DonorHomePage.aspx" />
+    <Content Include="DonorProfile.aspx" />
     <Content Include="favicon1.ico" />
     <Content Include="HomePage.aspx" />
     <Content Include="Contact.aspx" />
@@ -170,6 +173,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="TestPage.aspx" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -212,6 +216,13 @@
     <Compile Include="AdministratorHomePage.aspx.designer.cs">
       <DependentUpon>AdministratorHomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminProfile.aspx.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminProfile.aspx.designer.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="CampaignCreatorsHomePage.aspx.cs">
       <DependentUpon>CampaignCreatorsHomePage.aspx</DependentUpon>
@@ -220,12 +231,26 @@
     <Compile Include="CampaignCreatorsHomePage.aspx.designer.cs">
       <DependentUpon>CampaignCreatorsHomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CCProfile.aspx.cs">
+      <DependentUpon>CCProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CCProfile.aspx.designer.cs">
+      <DependentUpon>CCProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DonorHomePage.aspx.cs">
       <DependentUpon>DonorHomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DonorHomePage.aspx.designer.cs">
       <DependentUpon>DonorHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DonorProfile.aspx.cs">
+      <DependentUpon>DonorProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonorProfile.aspx.designer.cs">
+      <DependentUpon>DonorProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
@@ -280,6 +305,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TestPage.aspx.cs">
+      <DependentUpon>TestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage.aspx.designer.cs">
+      <DependentUpon>TestPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

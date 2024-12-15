@@ -100,7 +100,7 @@
                                         </div>
                                         <img for="memberphoto" width="40" src="Images/UserLogo/imglogo.png" class="mr-2 MImage" style="margin-left: 400px;">
                                         <asp:LinkButton class="U_name" ID="LinkButton15" runat="server">Donor Name</asp:LinkButton>
-                                        <a href="DonorProfilePage" class="viewProfile">View Profile</a>
+                                        <a href="DonorProfile.aspx" class="viewProfile">View Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -189,10 +189,9 @@
 
                 <ul class="logout">
                     <li>
-                        <a href="#">
+                        <a href="#" onclick="confirmLogout(event)">
                             <i class="fa fa-power-off fa-2x"></i>
-                            <span class="nav-text">Logout
-                            </span>
+                            <span class="nav-text">Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -215,7 +214,7 @@
                                         </div>
                                         <img for="memberphoto" width="40" src="Images/UserLogo/imglogo.png" class="mr-2 MImage" style="margin-left: 400px;">
                                         <asp:LinkButton class="U_name" ID="LinkButton1" runat="server">Campaign Creator Name</asp:LinkButton>
-                                        <a href="DonorProfilePage" class="viewProfile">View Profile</a>
+                                        <a href="CCProfile.aspx" class="viewProfile">View Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -285,7 +284,7 @@
 
                 <ul class="logout">
                     <li>
-                        <a href="logout.html">
+                        <a href="#" onclick="confirmLogout(event)">
                             <i class="fa fa-power-off fa-2x"></i>
                             <span class="nav-text">Logout</span>
                         </a>
@@ -313,7 +312,7 @@
                                         </div>
                                         <img for="memberphoto" width="40" src="Images/UserLogo/imglogo.png" class="mr-2 MImage" style="margin-left: 400px;">
                                         <asp:LinkButton class="U_name" ID="LinkButton2" runat="server">Administrator Name</asp:LinkButton>
-                                        <a href="DonorProfilePage" class="viewProfile">View Profile</a>
+                                        <a href="AdminProfile.aspx" class="viewProfile">View Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -371,7 +370,7 @@
 
                 <ul class="logout">
                     <li>
-                        <a href="logout.html">
+                        <a href="#" onclick="confirmLogout(event)">
                             <i class="fa fa-power-off fa-2x"></i>
                             <span class="nav-text">Logout</span>
                         </a>
@@ -484,7 +483,8 @@
             -webkit-user-select:none;
             -moz-user-select:none;
             -ms-user-select:none;
-            -o-user-select:none;
+            o-user-select:none;
+            user-select: none;
             user-select:none;
             }
 
@@ -559,8 +559,8 @@
 
 /*Donor User Page Content Hide anouther Pages*/
 
-.LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu
-
+.LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
+.CCProfile #DonorMenu, .AdminProfile #DonorMenu
 
 {
     display: none;
@@ -568,25 +568,31 @@
 
 /*Campaign Creator User Page Content Hide anouther Pages*/
 
-.LoginPage #CampaignCreatorMenu , .RegistrationPage #CampaignCreatorMenu , .HomePage #CampaignCreatorMenu , .DonorHomePage #CampaignCreatorMenu ,.AdministratorHomePage #CampaignCreatorMenu
-
+.LoginPage #CampaignCreatorMenu , .RegistrationPage #CampaignCreatorMenu , .HomePage #CampaignCreatorMenu , .DonorHomePage #CampaignCreatorMenu ,.AdministratorHomePage #CampaignCreatorMenu,
+.DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu
 {
     display: none;
 }
 
 /*Master Page Content Hide anouther Pages*/
 
-.DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar{
+.DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
+.AdminProfile #navbar
+{
     display: none;
 }
 
 /*Admin User Page Content Hide anouther Pages*/
 
-.LoginPage #AdminMenu , .RegistrationPage #AdminMenu , .HomePage #AdminMenu , .DonorHomePage #AdminMenu , .CampaignCreatorsHomePage #AdminMenu{
+.LoginPage #AdminMenu , .RegistrationPage #AdminMenu , .HomePage #AdminMenu , .DonorHomePage #AdminMenu , .CampaignCreatorsHomePage #AdminMenu, .DonorProfile #AdminMenu,
+.CCProfile #AdminMenu
+{
     display: none;
 }
 
-.LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem{
+.LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
+.CCProfile .footerSystem, .AdminProfile .footerSystem
+{
     color:black;
     text-align: center; 
     padding: 10px; 
@@ -606,3 +612,26 @@
 
 
 </style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmLogout(event) {
+        event.preventDefault(); // Prevent default navigation
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You will be logged out of the application.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the logout page
+                window.location.href = 'LoginPage.aspx';
+            }
+        });
+    }
+</script>
