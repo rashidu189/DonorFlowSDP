@@ -7,7 +7,7 @@
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5" style="width:150px;" 
                     src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                <Label style="color:forestgreen; font-weight:bold; margin-bottom:10px;">Admin</Label>
+                <Label style="color:forestgreen; font-weight:bold; margin-bottom:10px;">Administrator</Label>
                 <asp:Label ID="LabelUserID" runat="server" Text="UserId" CssClass="font-weight-bold"></asp:Label>
                 <asp:Label ID="LabelEmail" runat="server" Text="Email" CssClass="text-black-50"></asp:Label>
             </div>

@@ -21,7 +21,7 @@ namespace DonorFlow
                     if (Session["role"] == null || string.IsNullOrEmpty(Session["role"].ToString()))
                     {
                         // Make LinkButton15 visible if the role is null or empty
-                        siteMaster.LinkButton15Property.Visible = true;
+                        siteMaster.LinkButton1Property.Visible = true;
                     }
                     else if (Session["role"].Equals("DonorFlow_User"))
                     {

@@ -331,7 +331,7 @@
                         </a>
                     </li>
                     <li class="has-subnav">
-                        <a href="manage-users.html">
+                        <a href="ManageUsers.aspx">
                             <i class="fa fa-users fa-2x"></i>
                             <span class="nav-text">Manage Users</span>
                         </a>
@@ -560,7 +560,7 @@
 /*Donor User Page Content Hide anouther Pages*/
 
 .LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
-.CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu
+.CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu, .ManageUsers #DonorMenu, .ManageUserProfile #DonorMenu
 
 {
     display: none;
@@ -569,7 +569,7 @@
 /*Campaign Creator User Page Content Hide anouther Pages*/
 
 .LoginPage #CampaignCreatorMenu , .RegistrationPage #CampaignCreatorMenu , .HomePage #CampaignCreatorMenu , .DonorHomePage #CampaignCreatorMenu ,.AdministratorHomePage #CampaignCreatorMenu,
-.DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu
+.DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu, .ManageUsers #CampaignCreatorMenu, .ManageUserProfile #CampaignCreatorMenu
 {
     display: none;
 }
@@ -577,7 +577,7 @@
 /*Master Page Content Hide anouther Pages*/
 
 .DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
-.AdminProfile #navbar, .CampaignCreatePage #navbar
+.AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar
 {
     display: none;
 }
@@ -591,7 +591,7 @@
 }
 
 .LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
-.CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem
+.CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem, .ManageUsers .footerSystem, .ManageUserProfile .footerSystem
 {
     color:black;
     text-align: center; 

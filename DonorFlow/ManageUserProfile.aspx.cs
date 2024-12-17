@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace DonorFlow
 {
-    public partial class AdminProfile : System.Web.UI.Page
+    public partial class ManageUserProfile : System.Web.UI.Page
     {
         string UserId = string.Empty;
         public string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
@@ -30,24 +30,29 @@ namespace DonorFlow
                     {
                         // Set the text of LinkButton15 based on session data
                         siteMaster.LinkButton2Property.Text = Session["Full_Name"].ToString();
-                        LabelUserID.Text = Session["User_ID"].ToString();
-                        LabelEmail.Text = Session["Email_Address"].ToString();
-                        UserId = Session["User_ID"].ToString().Trim();
+
                     }
                 }
-                if (!IsPostBack)
-                {
-                    AdminDetails();
-                }
+
             }
             catch (Exception ex)
             {
                 // Handle exceptions properly
                 Response.Write(ex.Message);
             }
+            if (!IsPostBack)
+            {
+                string userName = Request.QueryString["userName"];
+                UserId = Request.QueryString["userId"];
+                string userRole = Request.QueryString["userRole"];
+                UserDetails();
+
+            }
         }
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
+            UserId = Request.QueryString["userId"];
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -57,13 +62,15 @@ namespace DonorFlow
                     {
                         cmd.CommandType = System.Data.CommandType.Text;
 
-                        cmd.CommandText = @"UPDATE User_tbl SET Full_Name = @FullName, Phone_Number = @PhoneNo, Address = @Address, Email_Address = @Email, Date_Of_Birth = @DOB WHERE User_ID = @UserId";
+                        cmd.CommandText = @"UPDATE User_tbl SET Full_Name = @FullName, Phone_Number = @PhoneNo, Address = @Address, Email_Address = @Email, Date_Of_Birth = @DOB, Status = @UserStatus, Role = @UserRole WHERE User_ID = @UserId";
 
                         cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
                         cmd.Parameters.AddWithValue("@PhoneNo", txtMobileNo.Text.Trim());
                         cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
                         cmd.Parameters.AddWithValue("@Email", txtEmailId.Text.Trim());
                         cmd.Parameters.AddWithValue("@DOB", DateTime.Parse(txtDob.Text.Trim()).ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@UserStatus", DStatus.SelectedValue);
+                        cmd.Parameters.AddWithValue("@UserRole", DUserRole.SelectedValue);
 
                         // Use the dynamic UserId from Session instead of hardcoding
                         cmd.Parameters.AddWithValue("@UserId", UserId);
@@ -71,7 +78,7 @@ namespace DonorFlow
                         cmd.ExecuteNonQuery();
 
                         string imageUrl = "Resources/success.png";
-                        string message = $"<img src='{imageUrl}' alt='Success' style='width:20px;height:20px;' /> Your information has been successfully updated.";
+                        string message = $"<img src='{imageUrl}' alt='Success' style='width:20px;height:20px;' /> User Account information has been successfully updated.";
                         Session["AlertMessage"] = message;
                         Session["AlertType"] = "alert-success";
 
@@ -89,6 +96,8 @@ namespace DonorFlow
 
         protected void UpdateBtn_Click(object sender, EventArgs e)
         {
+            UserId = Request.QueryString["userId"];
+
             if (string.IsNullOrEmpty(txtconfirmPassword.Text) || string.IsNullOrEmpty(txtnewPassword.Text))
             {
                 string imageUrl = "Resources/error.png";
@@ -115,7 +124,7 @@ namespace DonorFlow
                         cmd.ExecuteNonQuery();
 
                         string imageUrl = "Resources/success.png";
-                        string message = $"<img src='{imageUrl}' alt='Success' style='width:20px;height:20px;' /> Your Password has been successfully Changed.";
+                        string message = $"<img src='{imageUrl}' alt='Success' style='width:20px;height:20px;' /> User Account Password has been successfully Changed.";
                         Session["AlertMessage"] = message;
                         Session["AlertType"] = "alert-success";
 
@@ -136,6 +145,8 @@ namespace DonorFlow
         }
         protected void DeleteBtn_Click(object sender, EventArgs e)
         {
+            UserId = Request.QueryString["userId"];
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -147,16 +158,16 @@ namespace DonorFlow
                     cmd.ExecuteNonQuery();
 
                     string imageUrl = "Resources/error.png";
-                    string message = $"<img src='{imageUrl}' alt='Danger' style='width:20px;height:20px;' /> Your Account is Already Deleted.";
+                    string message = $"<img src='{imageUrl}' alt='Danger' style='width:20px;height:20px;' /> User Account is Already Deleted.";
                     Session["AlertMessage"] = message;
                     Session["AlertType"] = "alert-danger";
 
-                    Response.Redirect("LoginPage.aspx");
+                    Response.Redirect("ManageUsers.aspx");
                 }
                 conn.Close();
             }
         }
-        public void AdminDetails()
+        public void UserDetails()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -165,7 +176,7 @@ namespace DonorFlow
                 {
                     cmd.CommandType = System.Data.CommandType.Text;
 
-                    cmd.CommandText = @"SELECT [Full_Name],[Email_Address],[Phone_Number],[Date_Of_Birth],[Address],[Status],[Password] FROM User_tbl WHERE User_ID = @UserId";
+                    cmd.CommandText = @"SELECT [Full_Name],[Email_Address],[Phone_Number],[Date_Of_Birth],[Address],[Status],[Password],[User_ID],[Role] FROM User_tbl WHERE User_ID = @UserId";
 
                     cmd.Parameters.AddWithValue("@UserId", UserId);
 
@@ -179,8 +190,14 @@ namespace DonorFlow
                         DateTime dobValue = Convert.ToDateTime(dr.GetValue(3).ToString().Trim());
                         txtDob.Text = dobValue.ToString("yyyy-MM-dd").Trim();
                         txtAddress.Text = dr.GetValue(4).ToString().Trim();
-                        txtStatus.Text = dr.GetValue(5).ToString().Trim();
+                        string userStatus = dr.GetValue(5).ToString().Trim();
+                        DStatus.SelectedValue = userStatus;
                         txtcurrentPassword.Text = dr.GetValue(6).ToString().Trim();
+                        LabelUserID.Text = dr.GetValue(7).ToString().Trim();    
+                        LabelEmail.Text = dr.GetValue(1).ToString().Trim();
+                        LabelUserRole.Text = dr.GetValue(8).ToString().Trim();
+                        string userRole = dr.GetValue(8).ToString().Trim();
+                        DUserRole.SelectedValue = userRole;
                     }
 
                 }

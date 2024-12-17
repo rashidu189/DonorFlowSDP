@@ -58,7 +58,7 @@ namespace DonorFlow
                     {
                         cmd.CommandType = System.Data.CommandType.Text;
 
-                        cmd.CommandText = @"UPDATE User_tbl SET Full_Name = @FullName, Phone_Number = @PhoneNo, Address = @Address, Email_Address = @Email, Date_Of_Birth = @DOB WHERE User_ID = @UserID";
+                        cmd.CommandText = @"UPDATE User_tbl SET Full_Name = @FullName, Phone_Number = @PhoneNo, Address = @Address, Email_Address = @Email, Date_Of_Birth = @DOB WHERE User_ID = @UserId";
 
                         cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
                         cmd.Parameters.AddWithValue("@PhoneNo", txtMobileNo.Text.Trim());
@@ -76,7 +76,7 @@ namespace DonorFlow
                         Session["AlertMessage"] = message;
                         Session["AlertType"] = "alert-success";
 
-                        Response.Redirect("LoginPage.aspx");
+                        Response.Redirect(Request.RawUrl);
 
                     }
                     conn.Close();
@@ -119,6 +119,8 @@ namespace DonorFlow
                         string message = $"<img src='{imageUrl}' alt='Success' style='width:20px;height:20px;' /> Your Password has been successfully Changed.";
                         Session["AlertMessage"] = message;
                         Session["AlertType"] = "alert-success";
+
+                        Response.Redirect(Request.RawUrl);
                     }
                     conn.Close();
                 }
@@ -149,6 +151,8 @@ namespace DonorFlow
                     string message = $"<img src='{imageUrl}' alt='Danger' style='width:20px;height:20px;' /> Your Account is Already Deleted.";
                     Session["AlertMessage"] = message;
                     Session["AlertType"] = "alert-danger";
+
+                    Response.Redirect("LoginPage.aspx");
                 }
                 conn.Close();
             }
