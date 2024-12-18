@@ -106,6 +106,7 @@
     <Content Include="AdminProfile.aspx" />
     <Content Include="CampaignCreatePage.aspx" />
     <Content Include="CampaignCreatorsHomePage.aspx" />
+    <Content Include="CampaignDetails.aspx" />
     <Content Include="CCProfile.aspx" />
     <Content Include="DonorHomePage.aspx" />
     <Content Include="DonorProfile.aspx" />
@@ -141,6 +142,7 @@
     <Content Include="Images\UserLogo\generaluser.png" />
     <Content Include="Images\UserLogo\imglogo.png" />
     <Content Include="LoginPage.aspx" />
+    <Content Include="ManageCampaigns.aspx" />
     <Content Include="ManageUserProfile.aspx" />
     <Content Include="ManageUsers.aspx" />
     <Content Include="RegistrationPage.aspx" />
@@ -241,6 +243,13 @@
     <Compile Include="CampaignCreatorsHomePage.aspx.designer.cs">
       <DependentUpon>CampaignCreatorsHomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CampaignDetails.aspx.cs">
+      <DependentUpon>CampaignDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignDetails.aspx.designer.cs">
+      <DependentUpon>CampaignDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CCProfile.aspx.cs">
       <DependentUpon>CCProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,6 +302,13 @@
     </Compile>
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCampaigns.aspx.cs">
+      <DependentUpon>ManageCampaigns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageCampaigns.aspx.designer.cs">
+      <DependentUpon>ManageCampaigns.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageUserProfile.aspx.cs">
       <DependentUpon>ManageUserProfile.aspx</DependentUpon>

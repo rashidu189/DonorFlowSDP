@@ -337,7 +337,7 @@
                         </a>
                     </li>
                     <li class="has-subnav">
-                        <a href="campaign-management.html">
+                        <a href="ManageCampaigns.aspx">
                             <i class="fa fa-eye fa-2x"></i>
                             <span class="nav-text">Manage Campaigns</span>
                         </a>
@@ -560,7 +560,9 @@
 /*Donor User Page Content Hide anouther Pages*/
 
 .LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
-.CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu, .ManageUsers #DonorMenu, .ManageUserProfile #DonorMenu
+.CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu, .ManageUsers #DonorMenu, .ManageUserProfile #DonorMenu, .ManageCampaigns #DonorMenu,
+.CampaignDetails #DonorMenu
+
 
 {
     display: none;
@@ -569,7 +571,9 @@
 /*Campaign Creator User Page Content Hide anouther Pages*/
 
 .LoginPage #CampaignCreatorMenu , .RegistrationPage #CampaignCreatorMenu , .HomePage #CampaignCreatorMenu , .DonorHomePage #CampaignCreatorMenu ,.AdministratorHomePage #CampaignCreatorMenu,
-.DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu, .ManageUsers #CampaignCreatorMenu, .ManageUserProfile #CampaignCreatorMenu
+.DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu, .ManageUsers #CampaignCreatorMenu, .ManageUserProfile #CampaignCreatorMenu, .ManageCampaigns #CampaignCreatorMenu,
+.CampaignDetails #CampaignCreatorMenu
+
 {
     display: none;
 }
@@ -577,7 +581,9 @@
 /*Master Page Content Hide anouther Pages*/
 
 .DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
-.AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar
+.AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar, .ManageCampaigns #navbar, .CampaignDetails #navbar
+
+
 {
     display: none;
 }
@@ -591,7 +597,10 @@
 }
 
 .LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
-.CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem, .ManageUsers .footerSystem, .ManageUserProfile .footerSystem
+.CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem, .ManageUsers .footerSystem, .ManageUserProfile .footerSystem,
+.ManageCampaigns .footerSystem, .CampaignDetails .footerSystem
+
+
 {
     color:black;
     text-align: center; 

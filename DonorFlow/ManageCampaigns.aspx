@@ -1,33 +1,28 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="DonorFlow.ManageUsers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManageCampaigns.aspx.cs" Inherits="DonorFlow.ManageCampaigns" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-
     <div class="container-fluid" style="margin-top: 40px;">
-        <div class="UserManagement">
+        <div class="CampaignManagement">
             <div class="card-body Newmember">
                 <table>
                     <tr>
                         <td>
-                            <asp:Label ID="Label8" CssClass="txtbox" runat="server" Text="User Name"></asp:Label>
+                            <asp:Label ID="Label8" CssClass="txtbox" runat="server" Text="Campaign ID"></asp:Label>
                         </td>
                         <td colspan="2">
                             <asp:TextBox ID="TextBox3" CssClass="txtbox" runat="server" Style="width: 250px;"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Label ID="Label9" CssClass="txtbox" runat="server" Text="User Role"></asp:Label>
+                            <asp:Label ID="Label9" CssClass="txtbox" runat="server" Text="Campaign Tittle"></asp:Label>
                         </td>
                         <td colspan="2">
-                            <asp:DropDownList ID="DropDownList2" CssClass="txtbox" runat="server" Style="width: 250px;">
-                                <asp:ListItem Text="Donor" Value="Donor"></asp:ListItem>
-                                <asp:ListItem Text="Campaign Creator" Value="Campaign Creator"></asp:ListItem>
-                                <asp:ListItem Text="Administrator" Value="Administrator"></asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:TextBox ID="TextBox2" CssClass="txtbox" runat="server" Style="width: 250px;"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Label ID="Label1" CssClass="txtbox" runat="server" Text="User ID"></asp:Label>
+                            <asp:Label ID="Label1" CssClass="txtbox" runat="server" Text="Start Date"></asp:Label>
                         </td>
                         <td colspan="2">
-                            <asp:TextBox ID="TextBox1" CssClass="txtbox" runat="server" Style="width: 250px;"></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" CssClass="txtbox" runat="server" TextMode="Date" Style="width: 250px;"></asp:TextBox>
                         </td>
                         <td colspan="1">
                             <asp:Button class="btn btn-success text-center SearchBtn" ID="SearchBtn" runat="server" Text="Search" OnClick="SearchBtn_Click" />
@@ -37,6 +32,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>
+                            <asp:Label ID="Label2" CssClass="txtbox" runat="server" Text="End Date"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                            <asp:TextBox ID="TextBox4" CssClass="txtbox" runat="server" TextMode="Date" Style="width: 250px;"></asp:TextBox>
+                        </td>
                         <td>
                             <asp:Label ID="Label3" CssClass="txtbox" runat="server" Text="Status"></asp:Label>
                         </td>
@@ -49,12 +50,12 @@
                     </tr>
                 </table>
                 <br />
-                <asp:GridView ID="UserManagement" runat="server" AutoGenerateColumns="false" CssClass="gridview-style" OnRowCommand="UserManagement_RowCommand">
+                <asp:GridView ID="CampaignManagement" runat="server" AutoGenerateColumns="false" CssClass="gridview-style" OnRowCommand="CampaignManagement_RowCommand">
                     <Columns>
-                        <asp:BoundField DataField="User Name" HeaderText="User Name" />
-                        <asp:BoundField DataField="User Role" HeaderText="User Role" />
-                        <asp:BoundField DataField="User ID" HeaderText="User ID" />
-                        <asp:BoundField DataField="User Email" HeaderText="User Email" />
+                        <asp:BoundField DataField="Campaign ID" HeaderText="Campaign ID" />
+                        <asp:BoundField DataField="Campaign Title" HeaderText="Campaign Title" />
+                        <asp:BoundField DataField="Start Date" HeaderText="Start Date" />
+                        <asp:BoundField DataField="End Date" HeaderText="End Date" />
                         <asp:BoundField DataField="Status" HeaderText="Status" />
                         <asp:TemplateField>
                             <ItemTemplate>

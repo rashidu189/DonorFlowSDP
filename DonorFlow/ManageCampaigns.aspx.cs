@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace DonorFlow
 {
-    public partial class ManageUsers : System.Web.UI.Page
+    public partial class ManageCampaigns : System.Web.UI.Page
     {
         string UserId = string.Empty;
         public string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
@@ -54,15 +53,17 @@ namespace DonorFlow
         }
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            string userName = TextBox3.Text.ToString().Trim();
-            string userRole = DropDownList2.SelectedItem.Value.ToString().Trim();
-            string userId = TextBox1.Text.ToString().Trim();
+            string campaignId = TextBox3.Text.ToString().Trim();
+            string campaignTittle = TextBox2.Text.ToString().Trim();
+            string startDate = TextBox1.Text.ToString().Trim();
+            string enddate = TextBox4.Text.ToString().Trim();
             string status = DropDownList1.SelectedItem.Value.ToString().Trim();
+            Console.WriteLine("Status selected: " + status);
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = @"SELECT [Full_Name] AS [User Name],[Role] AS [User Role],[User_ID] AS [User ID],[Email_Address] AS [User Email],[Status] AS [Status] FROM User_tbl
-                                  WHERE [Full_Name] LIKE @UserName AND [Role] LIKE @UserRole AND [User_ID] LIKE @UserID AND [Status] LIKE @Status";
+                string query = @"SELECT [Campaign_ID] AS [Campaign ID],[Campaign_Title] AS [Campaign Title],[StartDate] AS [Start Date],[EndDate] AS [End Date],[Status] AS [Status] FROM Campaigns 
+                                 WHERE [Campaign_ID] LIKE @CampaignId AND [Campaign_Title] LIKE @CampaignTittle AND [StartDate] LIKE @StartDate AND [EndDate] LIKE @EndDate AND [Status] LIKE @Status";
 
                 // Open the connection
                 if (conn.State == ConnectionState.Closed)
@@ -72,10 +73,11 @@ namespace DonorFlow
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     // Add parameters to avoid SQL injection
-                    cmd.Parameters.AddWithValue("@UserName", "%" + userName + "%");
-                    cmd.Parameters.AddWithValue("@UserRole", "%" + userRole + "%");
-                    cmd.Parameters.AddWithValue("@UserID", "%" + userId + "%");
-                    cmd.Parameters.AddWithValue("@Status", status );
+                    cmd.Parameters.AddWithValue("@CampaignId", "%" + campaignId + "%");
+                    cmd.Parameters.AddWithValue("@CampaignTittle", "%" + campaignTittle + "%");
+                    cmd.Parameters.AddWithValue("@StartDate", "%" + startDate + "%");
+                    cmd.Parameters.AddWithValue("@EndDate", "%" + enddate + "%");
+                    cmd.Parameters.AddWithValue("@Status",  status );
 
                     // Execute the query and fill the data table
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -86,8 +88,8 @@ namespace DonorFlow
                     conn.Close();
 
                     // Bind the results to the GridView
-                    UserManagement.DataSource = dt;
-                    UserManagement.DataBind();
+                    CampaignManagement.DataSource = dt;
+                    CampaignManagement.DataBind();
                 }
             }
 
@@ -101,7 +103,7 @@ namespace DonorFlow
                     conn.Open();
 
                 // Use a SQL query to select data from the table
-                string query = "SELECT [Full_Name] AS [User Name],[Role] AS [User Role],[User_ID] AS [User ID],[Email_Address] AS [User Email],[Status] AS [Status] FROM User_tbl";
+                string query = "SELECT [Campaign_ID] AS [Campaign ID],[Campaign_Title] AS [Campaign Title],[StartDate] AS [Start Date],[EndDate] AS [End Date],[Status] AS [Status] FROM Campaigns";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
 
                 // No need to set the CommandType when using a SQL query
@@ -109,25 +111,24 @@ namespace DonorFlow
                 adapter.Fill(dt);
                 conn.Close();
 
-                UserManagement.DataSource = dt;
-                UserManagement.DataBind();
+                CampaignManagement.DataSource = dt;
+                CampaignManagement.DataBind();
             }
 
 
         }
-        public void UserManagement_RowCommand(object sender, GridViewCommandEventArgs e)
+        public void CampaignManagement_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Edit")
             {
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
 
-                GridViewRow row = UserManagement.Rows[rowIndex];
+                GridViewRow row = CampaignManagement.Rows[rowIndex];
 
-                string userName = row.Cells[0].Text;
-                string userRole = row.Cells[1].Text;
-                string userId = row.Cells[2].Text;
+                string campaignId = row.Cells[0].Text;
+                string campaignTittle = row.Cells[1].Text;
 
-                Response.Redirect("ManageUserProfile.aspx?userName=" + userName + "&userRole=" + userRole + "&userId=" + userId);
+                Response.Redirect("CampaignDetails.aspx?campaignId=" + campaignId + "&campaignTittle=" + campaignTittle);
 
 
             }
