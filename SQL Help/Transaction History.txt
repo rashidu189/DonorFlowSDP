@@ -1,0 +1,8 @@
+CREATE TABLE TransactionHistory (
+    ID INT IDENTITY(1,1) PRIMARY KEY,  -- Auto-incrementing ID
+    Transaction_ID AS ('TR' + RIGHT('00000' + CONVERT(VARCHAR(5), [ID]), 5)) PERSISTED,  -- Campaign ID with 'CA' prefix and zero-padded
+    Campaign_ID VARCHAR(50),
+    TransferedUser VARCHAR(50),
+    Transfer_Amount float,
+    TransferedDate DateTime
+);

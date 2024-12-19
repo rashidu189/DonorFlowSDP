@@ -45,6 +45,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -104,10 +107,23 @@
   <ItemGroup>
     <Content Include="AdministratorHomePage.aspx" />
     <Content Include="AdminProfile.aspx" />
+    <Content Include="Bootstrap\ChartJS\chart.js" />
+    <Content Include="Bootstrap\ChartJS\chartjs-plugin-datalabels.js" />
+    <Content Include="Bootstrap\ChartJS\jquery-3.6.0.min.js" />
+    <Content Include="Bootstrap\CSS\bootstrap.rtl.min.css" />
+    <Content Include="Bootstrap\JQuery\jquery.min.js" />
+    <Content Include="Bootstrap\JS\bootstrap.bundle.min.js" />
+    <Content Include="Bootstrap\JS\bootstrap.min.js" />
+    <Content Include="Bootstrap\JS\Newbootstrap.min.js" />
+    <Content Include="Bootstrap\JS\popper.min.js" />
+    <Content Include="Bootstrap\SignalR\signalr.min.js" />
     <Content Include="CampaignCreatePage.aspx" />
     <Content Include="CampaignCreatorsHomePage.aspx" />
     <Content Include="CampaignDetails.aspx" />
+    <Content Include="CampaignInfo.aspx" />
     <Content Include="CCProfile.aspx" />
+    <Content Include="PaymentPage.aspx" />
+    <Content Include="ViewCampaign.aspx" />
     <Content Include="DonorHomePage.aspx" />
     <Content Include="DonorProfile.aspx" />
     <Content Include="favicon1.ico" />
@@ -250,12 +266,33 @@
     <Compile Include="CampaignDetails.aspx.designer.cs">
       <DependentUpon>CampaignDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CampaignInfo.aspx.cs">
+      <DependentUpon>CampaignInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignInfo.aspx.designer.cs">
+      <DependentUpon>CampaignInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CCProfile.aspx.cs">
       <DependentUpon>CCProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CCProfile.aspx.designer.cs">
       <DependentUpon>CCProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentPage.aspx.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentPage.aspx.designer.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCampaign.aspx.cs">
+      <DependentUpon>ViewCampaign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewCampaign.aspx.designer.cs">
+      <DependentUpon>ViewCampaign.aspx</DependentUpon>
     </Compile>
     <Compile Include="DonorHomePage.aspx.cs">
       <DependentUpon>DonorHomePage.aspx</DependentUpon>

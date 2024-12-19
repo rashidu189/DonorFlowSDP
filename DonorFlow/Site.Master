@@ -9,6 +9,45 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Donor System</title>
 
+    <!-- Libraries -->
+
+    <!--bootstrap css-->
+    <link href="bootstrap/CSS/bootstrap.rtl.min.css" rel="stylesheet" />
+
+    <!--datatable css-->
+    <link href="Datatables/CSS/dataTables.dataTables.min.css" rel="stylesheet" />
+
+    <!--fontawesome css-->
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+
+    <!--our custom css-->
+    <link href="CSS/CustomStylesheet.css" rel="stylesheet" />
+
+    <!--jquery-->
+    <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
+
+    <!--bootstrap js-->
+    <script src="bootstrap/JS/bootstrap.min.js"></script>
+    <script src="bootstrap/JS/Newbootstrap.min.js"></script>
+
+    <!--popper js-->
+    <script src="bootstrap/JS/popper.min.js"></script>
+
+    <!--jquery-->
+    <script src="bootstrap/JQuery/jquery.min.js"></script>
+
+    <!-- Chart.js CDN -->
+    <script src="bootstrap/ChartJS/chart.js"></script>
+
+    <!-- JQuery -->
+    <script src="bootstrap/ChartJS/jquery-3.6.0.min.js"></script>
+
+    <!-- plugin-datalabels -->
+    <script src="bootstrap/ChartJS/chartjs-plugin-datalabels.js"></script>
+
+    <!-- SignalR -->
+    <script src="bootstrap/SignalR/signalr.min.js"></script>
+
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -233,7 +272,7 @@
                         </a>
                     </li>
                     <li class="has-subnav">
-                        <a href="view-campaigns.html">
+                        <a href="ViewCampaign.aspx">
                             <i class="fa fa-eye fa-2x"></i>
                             <span class="nav-text">View Campaigns</span>
                         </a>
@@ -561,7 +600,7 @@
 
 .LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
 .CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu, .ManageUsers #DonorMenu, .ManageUserProfile #DonorMenu, .ManageCampaigns #DonorMenu,
-.CampaignDetails #DonorMenu
+.CampaignDetails #DonorMenu, .ViewCampaign #DonorMenu, .CampaignInfo #DonorMenu
 
 
 {
@@ -581,8 +620,8 @@
 /*Master Page Content Hide anouther Pages*/
 
 .DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
-.AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar, .ManageCampaigns #navbar, .CampaignDetails #navbar
-
+.AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar, .ManageCampaigns #navbar, .CampaignDetails #navbar, .ViewCampaign #navbar,
+.CampaignInfo #navbar
 
 {
     display: none;
@@ -591,14 +630,14 @@
 /*Admin User Page Content Hide anouther Pages*/
 
 .LoginPage #AdminMenu , .RegistrationPage #AdminMenu , .HomePage #AdminMenu , .DonorHomePage #AdminMenu , .CampaignCreatorsHomePage #AdminMenu, .DonorProfile #AdminMenu,
-.CCProfile #AdminMenu, .CampaignCreatePage #AdminMenu
+.CCProfile #AdminMenu, .CampaignCreatePage #AdminMenu, .ViewCampaign #AdminMenu, .CampaignInfo #AdminMenu
 {
     display: none;
 }
 
 .LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
 .CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem, .ManageUsers .footerSystem, .ManageUserProfile .footerSystem,
-.ManageCampaigns .footerSystem, .CampaignDetails .footerSystem
+.ManageCampaigns .footerSystem, .CampaignDetails .footerSystem, .ViewCampaign .footerSystem, .CampaignInfo .footerSystem
 
 
 {

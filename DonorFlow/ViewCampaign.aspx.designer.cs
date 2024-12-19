@@ -11,16 +11,16 @@ namespace DonorFlow
 {
 
 
-    public partial class TestPage
+    public partial class DonationPayment
     {
 
         /// <summary>
-        /// litCampaigns control.
+        /// campaignsContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litCampaigns;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl campaignsContainer;
     }
 }
