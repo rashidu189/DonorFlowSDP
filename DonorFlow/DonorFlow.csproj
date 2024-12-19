@@ -121,7 +121,11 @@
     <Content Include="CampaignCreatorsHomePage.aspx" />
     <Content Include="CampaignDetails.aspx" />
     <Content Include="CampaignInfo.aspx" />
+    <Content Include="CampaignInfoD.aspx" />
     <Content Include="CCProfile.aspx" />
+    <Content Include="DashboardPage.aspx" />
+    <Content Include="DonationHistoryCC.aspx" />
+    <Content Include="DonationHistoryD.aspx" />
     <Content Include="PaymentPage.aspx" />
     <Content Include="ViewCampaign.aspx" />
     <Content Include="DonorHomePage.aspx" />
@@ -195,6 +199,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="TestPage.aspx" />
+    <Content Include="ViewCampaignD.aspx" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -273,12 +278,40 @@
     <Compile Include="CampaignInfo.aspx.designer.cs">
       <DependentUpon>CampaignInfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CampaignInfoD.aspx.cs">
+      <DependentUpon>CampaignInfoD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CampaignInfoD.aspx.designer.cs">
+      <DependentUpon>CampaignInfoD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CCProfile.aspx.cs">
       <DependentUpon>CCProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CCProfile.aspx.designer.cs">
       <DependentUpon>CCProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardPage.aspx.cs">
+      <DependentUpon>DashboardPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardPage.aspx.designer.cs">
+      <DependentUpon>DashboardPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DonationHistoryCC.aspx.cs">
+      <DependentUpon>DonationHistoryCC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonationHistoryCC.aspx.designer.cs">
+      <DependentUpon>DonationHistoryCC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DonationHistoryD.aspx.cs">
+      <DependentUpon>DonationHistoryD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DonationHistoryD.aspx.designer.cs">
+      <DependentUpon>DonationHistoryD.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaymentPage.aspx.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>
@@ -389,6 +422,13 @@
     </Compile>
     <Compile Include="TestPage.aspx.designer.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCampaignD.aspx.cs">
+      <DependentUpon>ViewCampaignD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewCampaignD.aspx.designer.cs">
+      <DependentUpon>ViewCampaignD.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

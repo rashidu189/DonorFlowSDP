@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace DonorFlow
 {
-    public partial class CampaignInfo : System.Web.UI.Page
+    public partial class CampaignInfoD : System.Web.UI.Page
     {
         string UserId = string.Empty;
         public string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
@@ -27,12 +25,12 @@ namespace DonorFlow
                     if (Session["role"] == null || string.IsNullOrEmpty(Session["role"].ToString()))
                     {
                         // Make LinkButton15 visible if the role is null or empty
-                        siteMaster.LinkButton1Property.Visible = true;
+                        siteMaster.LinkButton15Property.Visible = true;
                     }
                     else if (Session["role"].Equals("DonorFlow_User"))
                     {
                         // Set the text of LinkButton15 based on session data
-                        siteMaster.LinkButton1Property.Text = Session["Full_Name"].ToString();
+                        siteMaster.LinkButton15Property.Text = Session["Full_Name"].ToString();
                         UserId = Session["User_ID"].ToString().Trim();
                     }
                 }
@@ -81,7 +79,7 @@ namespace DonorFlow
                             imgDisplay.ImageUrl = "~/images/default.jpg"; // Fallback for missing image
                         }
                         txtDescription1.Text = reader["Description"].ToString();
-                        txtGoal1.Text = "$"+reader["Donation_Goal"].ToString();
+                        txtGoal1.Text = "$" + reader["Donation_Goal"].ToString();
                         txtStartDate1.Text = DateTime.Parse(reader["StartDate"].ToString()).ToString("dd MMM yyyy");
                         txtEndDate1.Text = DateTime.Parse(reader["EndDate"].ToString()).ToString("dd MMM yyyy");
                     }
@@ -199,8 +197,6 @@ namespace DonorFlow
                 }
             }
         }
-
-
 
     }
 }

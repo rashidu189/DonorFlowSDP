@@ -152,7 +152,7 @@
             <nav class="main-menu">
                 <ul>
                     <li>
-                        <a href="https://jbfarrow.com">
+                        <a href="DonorHomePage.aspx">
                             <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">Home
                             </span>
@@ -160,7 +160,7 @@
 
                     </li>
                     <li class="has-subnav">
-                        <a href="#">
+                        <a href="ViewCampaignD.aspx">
                             <i class="fa fa-eye fa-2x"></i>
                             <span class="nav-text">View Campaigns
                             </span>
@@ -168,7 +168,7 @@
 
                     </li>
                     <li class="has-subnav">
-                        <a href="#">
+                        <a href="DonationHistoryD.aspx">
                             <i class="fa fa-list fa-2x"></i>
                             <span class="nav-text">Donation History
                             </span>
@@ -266,7 +266,7 @@
             <nav class="main-menu">
                 <ul>
                     <li>
-                        <a href="index.html">
+                        <a href="CampaignCreatorsHomePage.aspx">
                             <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">Home</span>
                         </a>
@@ -278,7 +278,7 @@
                         </a>
                     </li>
                     <li class="has-subnav">
-                        <a href="donation-history.html">
+                        <a href="DonationHistoryCC.aspx">
                             <i class="fa fa-list fa-2x"></i>
                             <span class="nav-text">Donation History</span>
                         </a>
@@ -364,7 +364,7 @@
             <nav class="main-menu">
                 <ul>
                     <li>
-                        <a href="index.html">
+                        <a href="AdministratorHomePage.aspx">
                             <i class="fa fa-home fa-2x"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -600,7 +600,7 @@
 
 .LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
 .CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu, .ManageUsers #DonorMenu, .ManageUserProfile #DonorMenu, .ManageCampaigns #DonorMenu,
-.CampaignDetails #DonorMenu, .ViewCampaign #DonorMenu, .CampaignInfo #DonorMenu
+.CampaignDetails #DonorMenu, .ViewCampaign #DonorMenu, .CampaignInfo #DonorMenu, .DonationHistoryCC #DonorMenu, .DashboardPage.aspx #DonorMenu
 
 
 {
@@ -611,7 +611,7 @@
 
 .LoginPage #CampaignCreatorMenu , .RegistrationPage #CampaignCreatorMenu , .HomePage #CampaignCreatorMenu , .DonorHomePage #CampaignCreatorMenu ,.AdministratorHomePage #CampaignCreatorMenu,
 .DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu, .ManageUsers #CampaignCreatorMenu, .ManageUserProfile #CampaignCreatorMenu, .ManageCampaigns #CampaignCreatorMenu,
-.CampaignDetails #CampaignCreatorMenu
+.CampaignDetails #CampaignCreatorMenu, .DonationHistoryD #CampaignCreatorMenu, .ViewCampaignD #CampaignCreatorMenu, .CampaignInfoD #CampaignCreatorMenu, .DashboardPage.aspx #CampaignCreatorMenu
 
 {
     display: none;
@@ -621,7 +621,7 @@
 
 .DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
 .AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar, .ManageCampaigns #navbar, .CampaignDetails #navbar, .ViewCampaign #navbar,
-.CampaignInfo #navbar
+.CampaignInfo #navbar, .DonationHistoryCC #navbar, .DonationHistoryD #navbar, .ViewCampaignD #navbar, .CampaignInfoD #navbar, .DashboardPage.aspx #navbar
 
 {
     display: none;
@@ -630,15 +630,17 @@
 /*Admin User Page Content Hide anouther Pages*/
 
 .LoginPage #AdminMenu , .RegistrationPage #AdminMenu , .HomePage #AdminMenu , .DonorHomePage #AdminMenu , .CampaignCreatorsHomePage #AdminMenu, .DonorProfile #AdminMenu,
-.CCProfile #AdminMenu, .CampaignCreatePage #AdminMenu, .ViewCampaign #AdminMenu, .CampaignInfo #AdminMenu
+.CCProfile #AdminMenu, .CampaignCreatePage #AdminMenu, .ViewCampaign #AdminMenu, .CampaignInfo #AdminMenu, .DonationHistoryCC #AdminMenu,
+.DonationHistoryD #AdminMenu, .ViewCampaignD #AdminMenu, .CampaignInfoD #AdminMenu
+
 {
     display: none;
 }
 
 .LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
 .CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem, .ManageUsers .footerSystem, .ManageUserProfile .footerSystem,
-.ManageCampaigns .footerSystem, .CampaignDetails .footerSystem, .ViewCampaign .footerSystem, .CampaignInfo .footerSystem
-
+.ManageCampaigns .footerSystem, .CampaignDetails .footerSystem, .ViewCampaign .footerSystem, .CampaignInfo .footerSystem, .DonationHistoryCC .footerSystem,
+.DonationHistoryD .footerSystem, .ViewCampaignD .footerSystem, .CampaignInfoD .footerSystem, .DashboardPage.aspx .footerSystem
 
 {
     color:black;

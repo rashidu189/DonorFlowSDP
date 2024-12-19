@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static DonorFlow.DonationPayment;
 
 namespace DonorFlow
 {
-    public partial class DonationPayment : System.Web.UI.Page
+    public partial class ViewCampaignD : System.Web.UI.Page
     {
         string UserId = string.Empty;
         string CampaignId = string.Empty;
@@ -30,12 +26,12 @@ namespace DonorFlow
                     if (Session["role"] == null || string.IsNullOrEmpty(Session["role"].ToString()))
                     {
                         // Make LinkButton15 visible if the role is null or empty
-                        siteMaster.LinkButton1Property.Visible = true;
+                        siteMaster.LinkButton15Property.Visible = true;
                     }
                     else if (Session["role"].Equals("DonorFlow_User"))
                     {
                         // Set the text of LinkButton15 based on session data
-                        siteMaster.LinkButton1Property.Text = Session["Full_Name"].ToString();
+                        siteMaster.LinkButton15Property.Text = Session["Full_Name"].ToString();
                         UserId = Session["User_ID"].ToString().Trim();
                     }
                 }
@@ -50,7 +46,6 @@ namespace DonorFlow
                 LoadCampaigns();
             }
         }
-
         [WebMethod]
         public static List<Dictionary<string, string>> GetCampaigns()
         {
@@ -114,7 +109,7 @@ namespace DonorFlow
                     <p>{reader["Description"]}</p>
                     <h6>Donation Goal: ${reader["Donation_Goal"]}</h6>
                     <p>End Date: {formattedEndDate}</p>
-                    <a href='CampaignInfo.aspx?CampaignId={HttpUtility.UrlEncode(reader["Campaign_ID"].ToString())}'>View Details</a>
+                    <a href='CampaignInfoD.aspx?CampaignId={HttpUtility.UrlEncode(reader["Campaign_ID"].ToString())}'>View Details</a>
                 </div>";
                     campaignsContainer.InnerHtml += campaignHtml;
                 }
@@ -126,7 +121,7 @@ namespace DonorFlow
             string campaignId = btn.CommandArgument;
 
             // Redirect to the information page with the campaign title as a query parameter
-            Response.Redirect($"CampaignInfo.aspx?CampaignId={HttpUtility.UrlEncode(campaignId)}");
+            Response.Redirect($"CampaignInfoD.aspx?CampaignId={HttpUtility.UrlEncode(campaignId)}");
         }
     }
 }
