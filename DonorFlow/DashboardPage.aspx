@@ -33,7 +33,7 @@
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Total Donors</h5>
-                        <p id="totalStudentCount" class="card-text">Loading...</p>
+                        <p id="totalDonorCount" class="card-text">Loading...</p>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Total Campaign Creators</h5>
-                        <p id="totalEmployeeCount" class="card-text">Loading...</p>
+                        <p id="totalCampaignCreatorCount" class="card-text">Loading...</p>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="card text-white bg-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Total Administrators</h5>
-                        <p id="totalRevenue" class="card-text">Loading...</p>
+                        <p id="totalAdminCount" class="card-text">Loading...</p>
                     </div>
                 </div>
             </div>
@@ -68,16 +68,15 @@
                     <canvas id="progressChart"></canvas>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="dashboard" style="width: 100%; height: 300px;">
-                    <label style="font-weight: bold; display: block;">Donated Amount</label>
-                    <canvas id="revenueChart" style="width: 100%; height: 100%;"></canvas>
-                </div>
+                    <label style="font-weight: bold; display: block;">DonorFlow Revenue</label>
+                        <canvas id="revenueChart1" style="width: 650px; height: 500px; margin: 20px auto;"></canvas>
+                    </div>
             </div>
         </div>
 
-        <div class="row" style="margin-top: 60px; margin-bottom:100px;">
+        <div class="row" style="margin-top: 100px; margin-bottom: 150px;">
             <div class="col-md-4">
                 <div class="dashboard" style="width: 100%; height: 300px;">
                     <label style="font-weight: bold; display: block;">List of Campaign Catagory</label>
@@ -89,15 +88,59 @@
             <div class="col-md-4">
                 <div class="dashboard" style="width: 100%; height: 300px;">
                     <label style="font-weight: bold; display: block;">Active Campaigns and Donation Goals</label>
-                    <canvas id="campaignChart" style="width: 800px; height: 500px; margin: 20px auto;"></canvas>
+                    <canvas id="campaignChart" style="width: 600px; height: 500px; margin: 20px auto;"></canvas>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="dashboard" style="width: 100%; height: 300px;">
+                    <label style="font-weight: bold; display: block;">Donated Amount</label>
+                    <canvas id="revenueChart" style="width: 100%; height: 100%;"></canvas>
                 </div>
             </div>
         </div>
 
     </div>
 
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/api/transaction/revenue', // The API endpoint
+                method: 'GET',
+                success: function (data) {
+                    // Prepare data for Chart.js
+                    var dates = data.map(item => item.FromDate);
+                    var revenues = data.map(item => item.Revenue);
 
-
+                    var ctx = document.getElementById('revenueChart1').getContext('2d');
+                    var revenueChart = new Chart(ctx, {
+                        type: 'line', // You can change this to 'bar', 'pie', etc.
+                        data: {
+                            labels: dates,
+                            datasets: [{
+                                label: 'Revenue',
+                                data: revenues,
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1,
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        });
+    </script>
 
 
 <script>
@@ -120,8 +163,9 @@
                             label: 'Campaigns Status',
                             data: data,
                             backgroundColor: [
-                                'rgba(255, 0, 0, 0.5)',
-                                'rgba(0, 255, 0, 0.5)' 
+                                'rgba(0, 255, 0, 0.5)', 
+                                'rgba(255, 0, 0, 0.5)'
+
                             ],
                             borderWidth: 1
                         }]
@@ -167,6 +211,66 @@
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('api/campaigncreator/total')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("totalCampaignCreatorCount").innerText = data;
+            })
+            .catch(error => {
+                console.error("Error fetching campaign creator count:", error);
+                document.getElementById("totalCampaignCreatorCount").innerText = "Error loading data";
+            });
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('api/donor/total')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("totalDonorCount").innerText = data;
+            })
+            .catch(error => {
+                console.error("Error fetching donor count:", error);
+                document.getElementById("totalDonorCount").innerText = "Error loading data";
+            });
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('api/admin/total')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("totalAdminCount").innerText = data;
+            })
+            .catch(error => {
+                console.error("Error fetching admin count:", error);
+                document.getElementById("totalAdminCount").innerText = "Error loading data";
+            });
+    });
+</script>
+
 
 
     <script>
@@ -410,8 +514,9 @@
                             data: data,
                             backgroundColor: [
                                 'rgba(204,0,102, 0.5)', // Color for "Not Approved"
-                                'rgba(255, 0, 0, 0.5)',
-                                'rgba(0, 255, 0, 0.5)' // Color for "Approved"
+                                'rgba(0, 255, 0, 0.5)', // Color for "Approved"
+                                'rgba(255, 0, 0, 0.5)'
+
                             ],
                             borderWidth: 1
                         }]
@@ -532,12 +637,13 @@
 </script>
 
 <style>
-    .dashboard-card {
+    .dashboard-card{
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    
 }
 
 html, body {

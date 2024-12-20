@@ -58,7 +58,7 @@ namespace DonorFlow
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
 
-           string query = @"
+            string query = @"
                 SELECT SUM(TH.[Transfer_Amount]) AS TotalAmount,
                        UT.[Role]
                 FROM TransactionHistory TH
@@ -99,14 +99,16 @@ namespace DonorFlow
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
             string query = @"
-            SELECT 
-                CASE 
-                    WHEN [IS_Approved] = '0' THEN 'Not Approved'
-                    ELSE 'Approved'
-                END AS Approval_Status,
-                COUNT([IS_Approved]) AS Approval_Count
-            FROM Campaigns
-            GROUP BY [IS_Approved]";
+                        SELECT 
+                            CASE 
+                                WHEN [IS_Approved] = '0' THEN 'Not Approved'
+                                WHEN [IS_Approved] = 'Approved' THEN 'Approved'
+                                WHEN [IS_Approved] = 'Rejected' THEN 'Rejected'
+                                ELSE 'Unknown' -- Ensure a value is returned in the ELSE clause
+                            END AS Approval_Status,
+                            COUNT([IS_Approved]) AS Approval_Count
+                        FROM Campaigns
+                        GROUP BY [IS_Approved]";
 
             List<object> approvalData = new List<object>();
 
@@ -189,6 +191,170 @@ namespace DonorFlow
             }
 
             return Ok(campaignsData);
+        }
+
+        [HttpGet]
+        [Route("api/donor/total")]
+        public IHttpActionResult GetTotalDonors()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
+            try
+            {
+                int totalDonors = 0;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT([User_ID]) AS NumberofUsers FROM User_tbl WHERE [Role] = 'Donor'";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        totalDonors = (int)command.ExecuteScalar();
+                    }
+                }
+
+                return Ok(totalDonors);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        [HttpGet]
+        [Route("api/campaigncreator/total")]
+        public IHttpActionResult GetTotalCampaignCreators()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
+            try
+            {
+                int totalcampaigncreators = 0;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT([User_ID]) AS NumberofUsers FROM User_tbl WHERE [Role] = 'Campaign Creator'";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        totalcampaigncreators = (int)command.ExecuteScalar();
+                    }
+                }
+
+                return Ok(totalcampaigncreators);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        [HttpGet]
+        [Route("api/admin/total")]
+        public IHttpActionResult GetTotalAdmins()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
+            try
+            {
+                int totaladmins = 0;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT([User_ID]) AS NumberofUsers FROM User_tbl WHERE [Role] = 'Administrator'";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        totaladmins = (int)command.ExecuteScalar();
+                    }
+                }
+
+                return Ok(totaladmins);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        [HttpGet]
+        [Route("api/revenue/summary")]
+        public IHttpActionResult GetRevenueSummary()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
+            try
+            {
+                decimal revenue = 0;
+                string fromDate = string.Empty;
+                string toDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                SELECT 
+                    SUM([Transfer_Amount]) AS Revenue,
+                    CONVERT(VARCHAR(10), MIN([TransferedDate]), 120) AS FromDate,
+                    CONVERT(VARCHAR(10), GETDATE(), 120) AS ToDate
+                FROM 
+                    TransactionHistory";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                revenue = reader.IsDBNull(0) ? 0 : reader.GetDecimal(0);
+                                fromDate = reader.IsDBNull(1) ? toDate : reader.GetString(1);
+                            }
+                        }
+                    }
+                }
+
+                return Ok(new { Revenue = revenue, FromDate = fromDate, ToDate = toDate });
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        [RoutePrefix("api/transaction")]
+        public class TransactionController : ApiController
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
+
+            [HttpGet]
+            [Route("revenue")]
+            public IHttpActionResult GetRevenueData()
+            {
+                List<RevenueData> revenueDataList = new List<RevenueData>();
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT 
+                                        [Transfer_Amount] AS Revenue,
+                                        CONVERT(VARCHAR(10), [TransferedDate], 120) AS FromDate
+                                    FROM
+                                        TransactionHistory";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            revenueDataList.Add(new RevenueData
+                            {
+                                Revenue = Convert.ToDecimal(reader["Revenue"]),
+                                FromDate = Convert.ToString(reader["FromDate"])
+                            });
+                        }
+                    }
+                }
+
+                return Ok(revenueDataList);
+            }
+        }
+
+        public class RevenueData
+        {
+            public decimal Revenue { get; set; }
+            public string FromDate { get; set; }
         }
     }
 }
