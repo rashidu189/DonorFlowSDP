@@ -6,25 +6,7 @@
 
 
 
-    <script>
 
-        $(document).ready(function () {
-            // Set dummy data for Total Students
-            var totalStudents = 10;
-            $("#totalStudentCount").text(totalStudents);
-
-            // Set dummy data for Total Employees
-            var totalEmployees = 5;
-            $("#totalEmployeeCount").text(totalEmployees);
-
-            // Set dummy data for Total Revenue
-            var totalRevenue = 3;
-            $("#totalRevenue").text(totalRevenue);
-        });
-
-
-
-    </script>
 
 
     <div class="container col-md-12">

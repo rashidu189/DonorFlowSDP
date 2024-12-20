@@ -356,5 +356,100 @@ namespace DonorFlow
             public decimal Revenue { get; set; }
             public string FromDate { get; set; }
         }
+
+        [RoutePrefix("api")]
+        public class UserCampaignController : ApiController
+        {
+            [HttpGet]
+            [Route("userCampaignStatus")]
+            public IHttpActionResult GetUserCampaignStatusData(string UserId)
+            {
+                Console.WriteLine($"UserId received: {UserId}");
+                if (string.IsNullOrEmpty(UserId))
+                {
+                    return BadRequest("UserId is required");
+                }
+
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
+                string query = @"
+                    SELECT COUNT([Status]) AS CountofStatus, [Status] AS Status
+                    FROM Campaigns
+                    WHERE [Created User] = @UserId
+                    GROUP BY [Status]";
+
+                List<object> approvalData = new List<object>();
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@UserId", UserId);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        approvalData.Add(new
+                        {
+                            ApprovalStatus = reader["Status"].ToString(),
+                            ApprovalCount = Convert.ToInt32(reader["CountofStatus"])
+                        });
+                    }
+                }
+
+                return Ok(approvalData);
+            }
+
+        }
+
+        [RoutePrefix("api/userCampaignApproval")]  // Different RoutePrefix for this controller
+        public class UserCampaignApproveController : ApiController
+        {
+            [HttpGet]
+            [Route("userCampaignApprovalStatus")]  // This will be "api/userCampaignApproval/userCampaignApprovalStatus"
+            public IHttpActionResult GetUserCampaignApprovalData(string UserId)
+            {
+                Console.WriteLine($"UserId received: {UserId}");
+                if (string.IsNullOrEmpty(UserId))
+                {
+                    return BadRequest("UserId is required");
+                }
+
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DonorFlowConnectionString"].ConnectionString;
+                string query = @"
+            SELECT 
+                CASE 
+                    WHEN [IS_Approved] = '0' THEN 'Not Approved'
+                    WHEN [IS_Approved] = 'Approved' THEN 'Approved'
+                    WHEN [IS_Approved] = 'Rejected' THEN 'Rejected'
+                    ELSE 'Unknown'
+                END AS Approval_Status,
+                COUNT([IS_Approved]) AS Approval_Count
+            FROM Campaigns
+            WHERE [Created User] = @UserId
+            GROUP BY [IS_Approved]";
+
+                List<object> approvalData = new List<object>();
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@UserId", UserId);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        approvalData.Add(new
+                        {
+                            ApprovalStatus = reader["Approval_Status"].ToString(),
+                            ApprovalCount = Convert.ToInt32(reader["Approval_Count"])
+                        });
+                    }
+                }
+
+                return Ok(approvalData);
+            }
+        }
+
     }
 }

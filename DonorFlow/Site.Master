@@ -292,7 +292,7 @@
                         </a>
                     </li>
                     <li class="has-subnav">
-                        <a href="campaign-analytics.html">
+                        <a href="CampaignAnalytics.aspx">
                             <i class="fa fa-signal fa-2x"></i>
                             <span class="nav-text">Campaign Analytics</span>
                         </a>
@@ -602,7 +602,7 @@
 
 .LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
 .CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu, .ManageUsers #DonorMenu, .ManageUserProfile #DonorMenu, .ManageCampaigns #DonorMenu,
-.CampaignDetails #DonorMenu, .ViewCampaign #DonorMenu, .CampaignInfo #DonorMenu, .DonationHistoryCC #DonorMenu, .DashboardPage #DonorMenu
+.CampaignDetails #DonorMenu, .ViewCampaign #DonorMenu, .CampaignInfo #DonorMenu, .DonationHistoryCC #DonorMenu, .DashboardPage #DonorMenu, .CampaignAnalytics #DonorMenu
 
 
 {
@@ -615,6 +615,7 @@
 .DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu, .ManageUsers #CampaignCreatorMenu, .ManageUserProfile #CampaignCreatorMenu, .ManageCampaigns #CampaignCreatorMenu,
 .CampaignDetails #CampaignCreatorMenu, .DonationHistoryD #CampaignCreatorMenu, .ViewCampaignD #CampaignCreatorMenu, .CampaignInfoD #CampaignCreatorMenu, .DashboardPage #CampaignCreatorMenu
 
+
 {
     display: none;
 }
@@ -623,7 +624,7 @@
 
 .DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
 .AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar, .ManageCampaigns #navbar, .CampaignDetails #navbar, .ViewCampaign #navbar,
-.CampaignInfo #navbar, .DonationHistoryCC #navbar, .DonationHistoryD #navbar, .ViewCampaignD #navbar, .CampaignInfoD #navbar, .DashboardPage #navbar
+.CampaignInfo #navbar, .DonationHistoryCC #navbar, .DonationHistoryD #navbar, .ViewCampaignD #navbar, .CampaignInfoD #navbar, .DashboardPage #navbar, .CampaignAnalytics #navbar
 
 {
     display: none;
@@ -633,7 +634,7 @@
 
 .LoginPage #AdminMenu , .RegistrationPage #AdminMenu , .HomePage #AdminMenu , .DonorHomePage #AdminMenu , .CampaignCreatorsHomePage #AdminMenu, .DonorProfile #AdminMenu,
 .CCProfile #AdminMenu, .CampaignCreatePage #AdminMenu, .ViewCampaign #AdminMenu, .CampaignInfo #AdminMenu, .DonationHistoryCC #AdminMenu,
-.DonationHistoryD #AdminMenu, .ViewCampaignD #AdminMenu, .CampaignInfoD #AdminMenu
+.DonationHistoryD #AdminMenu, .ViewCampaignD #AdminMenu, .CampaignInfoD #AdminMenu, .CampaignAnalytics #AdminMenu
 
 {
     display: none;
@@ -642,7 +643,7 @@
 .LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
 .CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem, .ManageUsers .footerSystem, .ManageUserProfile .footerSystem,
 .ManageCampaigns .footerSystem, .CampaignDetails .footerSystem, .ViewCampaign .footerSystem, .CampaignInfo .footerSystem, .DonationHistoryCC .footerSystem,
-.DonationHistoryD .footerSystem, .ViewCampaignD .footerSystem, .CampaignInfoD .footerSystem, .DashboardPage .footerSystem
+.DonationHistoryD .footerSystem, .ViewCampaignD .footerSystem, .CampaignInfoD .footerSystem, .DashboardPage .footerSystem, .CampaignAnalytics .footerSystem
 
 {
     color:black;
