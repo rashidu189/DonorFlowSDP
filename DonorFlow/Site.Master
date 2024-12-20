@@ -4,6 +4,8 @@
 
 <html lang="en">
 <head runat="server">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -12,41 +14,35 @@
     <!-- Libraries -->
 
     <!--bootstrap css-->
-    <link href="bootstrap/CSS/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="Bootstrap/CSS/bootstrap.rtl.min.css" rel="stylesheet" />
 
-    <!--datatable css-->
-    <link href="Datatables/CSS/dataTables.dataTables.min.css" rel="stylesheet" />
-
-    <!--fontawesome css-->
-    <link href="fontawesome/css/all.css" rel="stylesheet" />
-
-    <!--our custom css-->
-    <link href="CSS/CustomStylesheet.css" rel="stylesheet" />
+    <!--fontawesome css
+    <link href="fontawesome/css/all.css" rel="stylesheet" />-->
 
     <!--jquery-->
-    <script src="bootstrap/JS/bootstrap.bundle.min.js"></script>
+    <script src="Bootstrap/JS/bootstrap.bundle.min.js"></script>
 
     <!--bootstrap js-->
-    <script src="bootstrap/JS/bootstrap.min.js"></script>
-    <script src="bootstrap/JS/Newbootstrap.min.js"></script>
+    <script src="Bootstrap/JS/bootstrap.min.js"></script>
+   <!-- <script src="bootstrap/JS/Newbootstrap.min.js"></script>-->
 
     <!--popper js-->
-    <script src="bootstrap/JS/popper.min.js"></script>
+    <script src="Bootstrap/JS/popper.min.js"></script>
 
     <!--jquery-->
-    <script src="bootstrap/JQuery/jquery.min.js"></script>
+    <script src="Bootstrap/JQuery/jquery.min.js"></script>
 
     <!-- Chart.js CDN -->
-    <script src="bootstrap/ChartJS/chart.js"></script>
+    <script src="Bootstrap/ChartJS/chart.js"></script>
 
     <!-- JQuery -->
-    <script src="bootstrap/ChartJS/jquery-3.6.0.min.js"></script>
+    <script src="Bootstrap/ChartJS/jquery-3.6.0.min.js"></script>
 
     <!-- plugin-datalabels -->
-    <script src="bootstrap/ChartJS/chartjs-plugin-datalabels.js"></script>
+    <script src="Bootstrap/ChartJS/chartjs-plugin-datalabels.js"></script>
 
     <!-- SignalR -->
-    <script src="bootstrap/SignalR/signalr.min.js"></script>
+    <script src="Bootstrap/SignalR/signalr.min.js"></script>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -96,7 +92,7 @@
     <script>
         // Auto close the alert after 5 seconds (adjust the timeout value as needed)
         window.setTimeout(function () {
-            document.getElementById('alertMessage').style.display = 'none';
+            document.getElementById('alertMessage')//.style.display = 'none';
         }, 5000); // 5000 milliseconds = 5 seconds
     </script>
 
@@ -366,6 +362,12 @@
                     <li>
                         <a href="AdministratorHomePage.aspx">
                             <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="DashboardPage.aspx">
+                            <i class="fa fa-signal fa-2x"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
@@ -522,7 +524,7 @@
             -webkit-user-select:none;
             -moz-user-select:none;
             -ms-user-select:none;
-            o-user-select:none;
+           /* o-user-select:none;*/
             user-select: none;
             user-select:none;
             }
@@ -546,7 +548,7 @@
               font-family: 'Titillium Web';
               font-style: normal;
               font-weight: 300;
-              src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+              src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(https://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
             }
 
             .hedcard{
@@ -600,7 +602,7 @@
 
 .LoginPage #DonorMenu , .RegistrationPage #DonorMenu , .HomePage #DonorMenu , .CampaignCreatorsHomePage #DonorMenu , .AdministratorHomePage #DonorMenu,
 .CCProfile #DonorMenu, .AdminProfile #DonorMenu, .CampaignCreatePage #DonorMenu, .ManageUsers #DonorMenu, .ManageUserProfile #DonorMenu, .ManageCampaigns #DonorMenu,
-.CampaignDetails #DonorMenu, .ViewCampaign #DonorMenu, .CampaignInfo #DonorMenu, .DonationHistoryCC #DonorMenu, .DashboardPage.aspx #DonorMenu
+.CampaignDetails #DonorMenu, .ViewCampaign #DonorMenu, .CampaignInfo #DonorMenu, .DonationHistoryCC #DonorMenu, .DashboardPage #DonorMenu
 
 
 {
@@ -611,7 +613,7 @@
 
 .LoginPage #CampaignCreatorMenu , .RegistrationPage #CampaignCreatorMenu , .HomePage #CampaignCreatorMenu , .DonorHomePage #CampaignCreatorMenu ,.AdministratorHomePage #CampaignCreatorMenu,
 .DonorProfile #CampaignCreatorMenu, .AdminProfile #CampaignCreatorMenu, .ManageUsers #CampaignCreatorMenu, .ManageUserProfile #CampaignCreatorMenu, .ManageCampaigns #CampaignCreatorMenu,
-.CampaignDetails #CampaignCreatorMenu, .DonationHistoryD #CampaignCreatorMenu, .ViewCampaignD #CampaignCreatorMenu, .CampaignInfoD #CampaignCreatorMenu, .DashboardPage.aspx #CampaignCreatorMenu
+.CampaignDetails #CampaignCreatorMenu, .DonationHistoryD #CampaignCreatorMenu, .ViewCampaignD #CampaignCreatorMenu, .CampaignInfoD #CampaignCreatorMenu, .DashboardPage #CampaignCreatorMenu
 
 {
     display: none;
@@ -621,7 +623,7 @@
 
 .DonorHomePage #navbar , .CampaignCreatorsHomePage #navbar , .AdministratorHomePage #navbar, .DonorProfile #navbar, .CCProfile #navbar,
 .AdminProfile #navbar, .CampaignCreatePage #navbar, .ManageUsers #navbar, .ManageUserProfile #navbar, .ManageCampaigns #navbar, .CampaignDetails #navbar, .ViewCampaign #navbar,
-.CampaignInfo #navbar, .DonationHistoryCC #navbar, .DonationHistoryD #navbar, .ViewCampaignD #navbar, .CampaignInfoD #navbar, .DashboardPage.aspx #navbar
+.CampaignInfo #navbar, .DonationHistoryCC #navbar, .DonationHistoryD #navbar, .ViewCampaignD #navbar, .CampaignInfoD #navbar, .DashboardPage #navbar
 
 {
     display: none;
@@ -640,7 +642,7 @@
 .LoginPage .footerSystem,.DonorHomePage .footerSystem ,.CampaignCreatorsHomePage .footerSystem ,.AdministratorHomePage .footerSystem, .DonorProfile .footerSystem,
 .CCProfile .footerSystem, .AdminProfile .footerSystem, .CampaignCreatePage .footerSystem, .ManageUsers .footerSystem, .ManageUserProfile .footerSystem,
 .ManageCampaigns .footerSystem, .CampaignDetails .footerSystem, .ViewCampaign .footerSystem, .CampaignInfo .footerSystem, .DonationHistoryCC .footerSystem,
-.DonationHistoryD .footerSystem, .ViewCampaignD .footerSystem, .CampaignInfoD .footerSystem, .DashboardPage.aspx .footerSystem
+.DonationHistoryD .footerSystem, .ViewCampaignD .footerSystem, .CampaignInfoD .footerSystem, .DashboardPage .footerSystem
 
 {
     color:black;
